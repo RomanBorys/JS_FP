@@ -1,0 +1,509 @@
+.favourites {
+  background-color: #f4f4f4;
+  padding: 20px;
+  min-height: 100vh;
+
+  &__title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 38px;
+    letter-spacing: -0.56px;
+    color: #242424;
+    margin-bottom: 20px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__remove-btn {
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #242424;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #242424;
+    }
+  }
+
+  &__remove-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__detail-header {
+    gap: 8px;
+  }
+
+  .exercises__detail-card {
+    border-radius: 15px;
+  }
+
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+
+    &-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18px;
+      text-align: center;
+      color: #242424;
+      max-width: 318px;
+    }
+  }
+
+  .is-hidden {
+    display: none;
+  }
+
+  &__daily {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    min-height: 119px;
+  }
+
+  &__daily-icon {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__daily-text {
+    position: absolute;
+    left: 20px;
+    top: 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__daily-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #242424;
+    margin: 0;
+  }
+
+  &__daily-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: rgba(36, 36, 36, 0.6);
+    margin: 0;
+  }
+
+  &__quote {
+    background-color: #242424;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    max-width: 335px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &-content {
+      position: relative;
+    }
+
+    &-header {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    &-icon {
+      flex-shrink: 0;
+      width: 34px;
+      height: 32px;
+    }
+
+    &-text {
+      flex: 1;
+    }
+
+    &-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 20px;
+      color: #f4f4f4;
+      margin-bottom: 8px;
+      font-variation-settings: 'opsz' 14;
+    }
+
+    &-body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18px;
+      color: rgba(244, 244, 244, 0.6);
+      font-variation-settings: 'opsz' 14;
+    }
+
+    &-commas {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+    }
+
+    &-author {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18px;
+      color: #f4f4f4;
+      margin-top: 16px;
+      padding-left: 52px; 
+      font-variation-settings: 'opsz' 14;
+    }
+  }
+
+
+  &__image {
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    max-width: 335px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 119px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__photo {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 119px;
+    margin-bottom: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 335px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 119px;
+
+    &-icon {
+      width: 20px;
+      height: 20px;
+      margin-bottom: 15px;
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    &-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 20px;
+      color: #242424;
+      font-variation-settings: 'opsz' 14;
+    }
+
+    &-subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18px;
+      color: rgba(36, 36, 36, 0.6);
+      font-variation-settings: 'opsz' 14;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .favourites {
+    padding: 0px 32px 32px 32px;
+
+    &__title {
+      font-size: 44px;
+      line-height: 48px;
+      letter-spacing: -0.88px;
+      margin-top: 0px;
+      margin-bottom: 32px;
+    }
+
+    &__quote,
+    &__image,
+    &__info {
+      max-width: none;
+    }
+
+    &__cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    &__daily {
+      min-height: 141px;
+      padding: 25px;
+      margin-bottom: 0;
+    }
+
+    &__daily-icon {
+      left: 25px;
+      top: 25px;
+    }
+
+    &__daily-text {
+      left: 25px;
+      top: 60px;
+    }
+
+    &__photo {
+      height: 141px;
+      margin-bottom: 0;
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px 16px;
+    }
+
+    &__quote {
+      padding: 24px;
+
+      &-title {
+        font-size: 22px;
+      }
+
+      &-body {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+
+    &__empty {
+      margin-top: 92px;
+    }
+
+    &__empty-text {
+      font-size: 18px;
+      line-height: 24px;
+      max-width: 554px;
+    }
+
+    .inspiration {
+      display: block;
+      grid-template-columns: none;
+      grid-template-rows: none;
+      column-gap: 0;
+      row-gap: 0;
+      margin: 0 0 16px 0 !important;
+    }
+
+    .inspiration__quoteBlock {
+      width: 100%;
+      height: auto;
+      padding: 40px;
+      padding-bottom: 40px;
+      margin-bottom: 16px;
+    }
+
+    .inspiration__quoteBlock > img {
+      top: 40px;
+      right: 40px;
+      width: 24px;
+      height: 24px;
+    }
+
+    .inspiration__quoteBlock__text {
+      gap: 16px;
+    }
+
+    .inspiration__quoteBlock__text__title {
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    .inspiration__quoteBlock__author {
+      margin: 8px 0 0 50px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .inspiration__quoteBlock__text_quote {
+      width: 100%;
+      max-width: 574px;
+      height: auto;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .favourites {
+    padding: 0px 32px 64px 32px;
+    display: grid;
+    grid-template-columns: 494px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "title title"
+      "left list";
+    row-gap: 32px;
+    column-gap: 32px;
+    align-items: start;
+
+    &__title {
+      grid-area: title;
+      margin: 0;
+    }
+
+    &__left {
+      grid-area: left;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 494px;
+      margin-top: 0;
+    }
+
+    &__cards {
+      grid-template-columns: repeat(2, minmax(239px, 1fr));
+      gap: 16px;
+      margin-bottom: 0;
+      width: 494px;
+      order: 2;
+    }
+
+    &__daily,
+    &__photo {
+      height: 141px;
+    }
+
+    &__daily {
+      width: 239px;
+    }
+
+    &__photo {
+      width: 239px;
+    }
+
+    &__list {
+      grid-area: list;
+      grid-template-columns: repeat(2, minmax(405px, 1fr));
+      gap: 16px;
+      margin: 0;
+      max-height: 487px;
+      overflow-y: auto;
+      padding-right: 16px;
+      scrollbar-width: thin;
+      scrollbar-color: #242424 rgba(36, 36, 36, 0.1);
+    }
+
+    &__empty {
+      grid-area: list;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    &__list::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &__list::-webkit-scrollbar-track {
+      background: rgba(36, 36, 36, 0.1);
+      border-radius: 12px;
+    }
+
+    &__list::-webkit-scrollbar-thumb {
+      background: #242424;
+      border-radius: 12px;
+    }
+
+    .exercises__detail-card {
+      min-width: 405px;
+    }
+
+    .inspiration__quoteBlock {
+      width: 494px;
+      height: auto;
+      padding: 40px;
+      margin-bottom: 0;
+    }
+
+    .inspiration__quoteBlock > img {
+      top: 40px;
+      right: 40px;
+      width: 24px;
+      height: 24px;
+    }
+
+    .inspiration {
+      width: 494px;
+      gap: 16px;
+      margin-bottom: 0;
+      padding-top: 0;
+    }
+
+    .inspiration {
+      order: 1;
+    }
+  }
+}
+
+.favourites .inspiration {
+  margin: 0 !important;
+}
+
+.favourites .inspiration__news {
+  display: none;
+}
+
+.favourites .inspiration__image {
+  display: none;
+}

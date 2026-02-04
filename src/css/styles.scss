@@ -1,0 +1,13 @@
+@use 'base';
+@use 'variables';
+@use 'header';
+@use 'fonts';
+@use 'hero';
+@use 'exercises';
+@use 'inspiration';
+@use 'favorites-section';
+@use 'footer';
+
+body {
+  background-color: variables.$primary-color;
+}

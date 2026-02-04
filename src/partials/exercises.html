@@ -1,0 +1,209 @@
+<section class="exercises">
+    <div class="exercises__container">
+        <div class="exercises__header">
+            <h2 class="exercises__title">Exercises<span id="exercisesCategoryTitle"></span></h2>
+
+            <div class="exercises__search" id="exercisesSearch" style="display: none;">
+                <input type="text" class="exercises__search-input" id="exercisesSearchInput" placeholder="Search">
+                <svg class="exercises__search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 18 18" fill="none">
+                    <path
+                        d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
+                        stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M15.7498 15.75L12.4873 12.4875" stroke="#242424" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+
+            <div class="exercises__tabs" id="exercisesTabs">
+                <button class="exercises__tab exercises__tab--active" data-filter="Muscles">
+                    Muscles
+                </button>
+                <button class="exercises__tab" data-filter="Body parts">
+                    Body parts
+                </button>
+                <button class="exercises__tab" data-filter="Equipment">
+                    Equipment
+                </button>
+            </div>
+        </div>
+
+        <ul class="exercises__list" id="exercisesList">
+
+        </ul>
+
+        <div class="exercises__pagination" id="exercisesPagination"></div>
+    </div>
+
+    <template id="exerciseCardTemplate">
+        <li class="exercises__item">
+            <article class="exercises__card exercises__card--category">
+                <img class="exercises__card-img" src="" alt="">
+                <div class="exercises__card-overlay">
+                    <h3 class="exercises__card-title"></h3>
+                    <p class="exercises__card-subtitle"></p>
+                </div>
+            </article>
+        </li>
+    </template>
+
+    <template id="exerciseDetailCardTemplate">
+        <li class="exercises__item exercises__item--detail">
+            <article class="exercises__detail-card" data-exercise-id="">
+                <div class="exercises__detail-header">
+                    <span class="exercises__detail-badge">WORKOUT</span>
+                    <div class="exercises__detail-rating">
+                        <span class="exercises__detail-rating-value"></span>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7 1.16675L8.8125 4.84175L12.8333 5.43341L9.91667 8.27508L10.625 12.2751L7 10.3667L3.375 12.2751L4.08333 8.27508L1.16667 5.43341L5.1875 4.84175L7 1.16675Z"
+                                fill="#EEA10C" stroke="#EEA10C" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <button class="exercises__detail-start" type="button">
+                        Start
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M7.5 14L14 7.5M14 7.5L7.5 1M14 7.5H1" stroke="currentColor" stroke-width="1.3"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="exercises__detail-body">
+                    <div class="exercises__detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="12" fill="#242424" />
+                            <path
+                                d="M18.8234 8.72544C18.6138 8.47504 18.2403 8.44212 17.9899 8.65092L16.349 10.0294L15.5943 8.15967C15.5675 8.08949 15.5267 8.03057 15.4799 7.97859C15.3257 7.63549 15.058 7.34091 14.6889 7.17023C14.5286 7.09745 14.3631 7.05846 14.1977 7.0394C14.1613 7.02034 14.1283 6.99521 14.0868 6.98222L11.199 6.17732C11.037 6.13314 10.8741 6.16173 10.7407 6.2397C10.5821 6.29342 10.4461 6.40865 10.3811 6.57587L9.29378 9.37178C9.17594 9.67589 9.3267 10.019 9.63168 10.1386C9.93492 10.2564 10.2789 10.1048 10.3976 9.79978L11.316 7.43882L12.6312 7.80444C12.5991 7.85643 12.5645 7.90495 12.5385 7.9604L10.8524 11.6149C10.8282 11.6686 10.8152 11.7232 10.7979 11.7787L8.7488 15.214L5.31955 16.3611C4.9314 16.6514 4.84909 17.1981 5.13587 17.5862C5.42439 17.9752 5.97282 18.0575 6.36011 17.7708L9.86907 16.5621C9.97651 16.4841 10.0545 16.3819 10.1134 16.2719C10.1576 16.2251 10.2078 16.1878 10.2416 16.1298L11.4633 14.0816L13.6319 15.9296L11.3116 18.5445C10.9919 18.9049 11.024 19.4603 11.3862 19.7791C11.7474 20.1005 12.3011 20.0667 12.6225 19.7046L15.5181 16.4426C15.6082 16.342 15.6619 16.2259 15.6983 16.1047C15.7199 16.0388 15.7199 15.9704 15.7251 15.9019C15.7251 15.8673 15.7381 15.8361 15.7355 15.804C15.7277 15.5649 15.6307 15.3327 15.4349 15.1672L13.4395 13.4656C13.5834 13.3287 13.7055 13.1658 13.7939 12.9743L15.0866 10.1749L15.5007 11.2779C15.5181 11.3758 15.551 11.472 15.6203 11.5525C15.6827 11.627 15.7624 11.6764 15.8473 11.7111C15.856 11.7154 15.8664 11.7163 15.8768 11.7189C15.9305 11.7379 15.9851 11.7561 16.0414 11.7587C16.1081 11.7648 16.1757 11.7561 16.2441 11.7371C16.2459 11.7362 16.2467 11.7362 16.2467 11.7362C16.2649 11.7319 16.2831 11.7353 16.3013 11.7275C16.3975 11.6912 16.4711 11.6296 16.5344 11.5577L18.8893 9.55892C19.1397 9.34838 19.034 8.97583 18.8234 8.72544Z"
+                                fill="#F4F4F4" />
+                            <path
+                                d="M15.8448 7.30102C16.7564 7.30102 17.4954 6.56206 17.4954 5.65051C17.4954 4.73896 16.7564 4 15.8448 4C14.9333 4 14.1943 4.73896 14.1943 5.65051C14.1943 6.56206 14.9333 7.30102 15.8448 7.30102Z"
+                                fill="#F4F4F4" />
+                        </svg>
+                    </div>
+                    <h3 class="exercises__detail-title"></h3>
+                </div>
+                <div class="exercises__detail-footer">
+                    <p class="exercises__detail-info">
+                        <span class="exercises__detail-info-label">Burned calories:</span>
+                        <span class="exercises__detail-info-value exercises__detail-calories"></span>
+                    </p>
+                    <p class="exercises__detail-info">
+                        <span class="exercises__detail-info-label">Body part:</span>
+                        <span class="exercises__detail-info-value exercises__detail-bodypart"></span>
+                    </p>
+                    <p class="exercises__detail-info">
+                        <span class="exercises__detail-info-label">Target:</span>
+                        <span class="exercises__detail-info-value exercises__detail-target"></span>
+                    </p>
+                </div>
+            </article>
+        </li>
+    </template>
+
+    <div class="exercises__modal" id="exerciseModal" aria-hidden="true">
+        <div class="exercises__modal-backdrop" data-modal-close></div>
+        <div class="exercises__modal-content" role="dialog" aria-modal="true" aria-labelledby="exerciseModalTitle">
+            <button class="exercises__modal-close" type="button" aria-label="Close" data-modal-close>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="exercises__modal-body">
+                <div class="exercises__modal-media">
+                    <img class="exercises__modal-img" id="exerciseModalImg" src="" alt="">
+                </div>
+                <div class="exercises__modal-info">
+                    <h3 class="exercises__modal-title" id="exerciseModalTitle"></h3>
+                    <div class="exercises__modal-rating">
+                        <span class="exercises__modal-rating-value" id="exerciseModalRatingValue"></span>
+                        <div class="exercises__modal-stars" id="exerciseModalStars" aria-hidden="true">
+                            <span class="exercises__modal-star"></span>
+                            <span class="exercises__modal-star"></span>
+                            <span class="exercises__modal-star"></span>
+                            <span class="exercises__modal-star"></span>
+                            <span class="exercises__modal-star"></span>
+                        </div>
+                    </div>
+                    <div class="exercises__modal-divider"></div>
+                    <div class="exercises__modal-meta">
+                        <div class="exercises__modal-meta-item">
+                            <span class="exercises__modal-meta-label">Target</span>
+                            <span class="exercises__modal-meta-value" id="exerciseModalTarget"></span>
+                        </div>
+                        <div class="exercises__modal-meta-item">
+                            <span class="exercises__modal-meta-label">Body Part</span>
+                            <span class="exercises__modal-meta-value" id="exerciseModalBodyPart"></span>
+                        </div>
+                        <div class="exercises__modal-meta-item">
+                            <span class="exercises__modal-meta-label">Equipment</span>
+                            <span class="exercises__modal-meta-value" id="exerciseModalEquipment"></span>
+                        </div>
+                        <div class="exercises__modal-meta-item">
+                            <span class="exercises__modal-meta-label">Popular</span>
+                            <span class="exercises__modal-meta-value" id="exerciseModalPopularity"></span>
+                        </div>
+                        <div class="exercises__modal-meta-item exercises__modal-meta-item--calories">
+                            <span class="exercises__modal-meta-label">Burned calories</span>
+                            <span class="exercises__modal-meta-value" id="exerciseModalCalories"></span>
+                        </div>
+                    </div>
+                    <div class="exercises__modal-divider"></div>
+                    <p class="exercises__modal-description" id="exerciseModalDescription"></p>
+                    <div class="exercises__modal-actions">
+                        <button class="exercises__modal-btn exercises__modal-btn--primary" type="button">
+                            <span class="exercises__modal-btn-text">Add to favorites</span>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 15.5L7.9125 14.52C4.05 11.09 1.5 8.84 1.5 6.1C1.5 3.85 3.3 2.1 5.55 2.1C6.82 2.1 8.04 2.69 8.85 3.62C9.66 2.69 10.88 2.1 12.15 2.1C14.4 2.1 16.2 3.85 16.2 6.1C16.2 8.84 13.65 11.09 9.7875 14.52L9 15.5Z"
+                                    stroke="currentColor" stroke-width="1.2" fill="none" />
+                            </svg>
+                        </button>
+                        <button class="exercises__modal-btn exercises__modal-btn--outline" type="button" id="exerciseModalRatingBtn">
+                            Give a rating
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="exercises__modal-loading" id="exerciseModalLoading">Loading...</div>
+            <div class="exercises__modal-error" id="exerciseModalError"></div>
+        </div>
+    </div>
+
+    <div class="exercises__modal exercises__modal--rating" id="ratingModal" aria-hidden="true">
+        <div class="exercises__modal-backdrop" data-modal-close></div>
+        <div class="exercises__modal-content" role="dialog" aria-modal="true" aria-labelledby="ratingModalTitle">
+            <button class="exercises__modal-close" type="button" aria-label="Close" data-modal-close>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="exercises__rating-body">
+                <p class="exercises__rating-label" id="ratingModalTitle">Rating</p>
+                <div class="exercises__rating-row">
+                    <span class="exercises__rating-value" id="ratingModalValue">0.0</span>
+                    <div class="exercises__rating-stars" id="ratingModalStars" aria-hidden="true">
+                        <button class="exercises__rating-star" type="button" data-value="1" aria-label="1 star"></button>
+                        <button class="exercises__rating-star" type="button" data-value="2" aria-label="2 stars"></button>
+                        <button class="exercises__rating-star" type="button" data-value="3" aria-label="3 stars"></button>
+                        <button class="exercises__rating-star" type="button" data-value="4" aria-label="4 stars"></button>
+                        <button class="exercises__rating-star" type="button" data-value="5" aria-label="5 stars"></button>
+                    </div>
+                </div>
+                <form class="exercises__rating-form" id="ratingModalForm">
+                    <input class="exercises__rating-input" id="ratingEmailInput" type="email" placeholder="Email">
+                    <textarea class="exercises__rating-textarea" id="ratingReviewInput" placeholder="Your comment"></textarea>
+                    <button class="exercises__modal-btn exercises__modal-btn--primary exercises__rating-submit" type="submit"
+                        id="ratingSubmitBtn">
+                        Send
+                    </button>
+                </form>
+                <div class="exercises__modal-loading" id="ratingModalLoading">Loading...</div>
+                <div class="exercises__modal-error" id="ratingModalError"></div>
+            </div>
+        </div>
+    </div>
+</section>

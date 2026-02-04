@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YourEnergy</title>
+    <link rel="icon" href="/vanilla-app-template/assets/favicon-CsWtynId.ico" />
+    <script type="module" crossorigin src="/vanilla-app-template/assets/main-CFEWeAJI.js"></script>
+    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/main-CUhIRP3e.css">
+    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/vendor-ClUZctLU.css">
+  </head>
+
+  <body>
+    <header class="header">
+  <div class="container header__container">
+    <a href="./index.html" class="header_logo">
+      <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='132'%20height='24'%20viewBox='0%200%20132%2024'%20fill='none'%3e%3cpath%20d='M4.98%2013.28L0%205H2.98L6.32%2010.74H6.36L9.7%205H12.68L7.7%2013.28V19H4.98V13.28Z'%20fill='%23242424'/%3e%3cpath%20d='M12.6703%2016.7V7.3L14.9703%205H22.1703L24.4703%207.3V16.7L22.1703%2019H14.9703L12.6703%2016.7ZM20.7303%2016.68L21.7503%2015.66V8.34L20.7303%207.32H16.4103L15.3903%208.34V15.66L16.4103%2016.68H20.7303Z'%20fill='%23242424'/%3e%3cpath%20d='M26.3742%2016.6V5H29.0942V15.66L30.1142%2016.68H34.0342L35.0542%2015.66V5H37.7742V16.6L35.3742%2019H28.7742L26.3742%2016.6Z'%20fill='%23242424'/%3e%3cpath%20d='M50.8781%2014.36V19H48.1581V14.98L46.9581%2013.64H42.5981V19H39.8781V5H48.6581L50.7981%207.16V11.4L49.4381%2012.78L50.8781%2014.36ZM42.5981%2011.4H47.4181L48.1181%2010.7V7.98L47.4181%207.28H42.5981V11.4Z'%20fill='%23242424'/%3e%3cpath%20d='M57.8234%205H67.9434V7.3H60.5434V10.84H67.3634V13.1H60.5434V16.7H67.9434V19H57.8234V5Z'%20fill='%23242424'/%3e%3cpath%20d='M69.4523%205H71.8923L78.1323%2014.5H78.1723V5H80.7923V19H78.3523L72.1123%209.52H72.0723V19H69.4523V5Z'%20fill='%23242424'/%3e%3cpath%20d='M82.8977%205H93.0177V7.3H85.6177V10.84H92.4377V13.1H85.6177V16.7H93.0177V19H82.8977V5Z'%20fill='%23242424'/%3e%3cpath%20d='M105.527%2014.36V19H102.807V14.98L101.607%2013.64H97.2466V19H94.5266V5H103.307L105.447%207.16V11.4L104.087%2012.78L105.527%2014.36ZM97.2466%2011.4H102.067L102.767%2010.7V7.98L102.067%207.28H97.2466V11.4Z'%20fill='%23242424'/%3e%3cpath%20d='M107.323%2016.7V7.3L109.623%205H116.583L118.843%207.26V9.4H116.123V8.26L115.183%207.32H111.063L110.043%208.34V15.66L111.063%2016.68H115.223L116.203%2015.7V13.52H113.203V11.2H118.843V16.7L116.543%2019H109.623L107.323%2016.7Z'%20fill='%23242424'/%3e%3cpath%20d='M123.828%2013.28L118.848%205H121.828L125.168%2010.74H125.208L128.548%205H131.528L126.548%2013.28V19H123.828V13.28Z'%20fill='%23242424'/%3e%3c/svg%3e" alt="YourEnergy Logo" />
+    </a>
+
+    <nav class="header_nav">
+      <ul class="header_nav-list">
+        <li>
+          <a href="./index.html" class="header_nav-link" data-nav="home">Home</a>
+        </li>
+        <li>
+          <a href="./page-2.html" class="header_nav-link" data-nav="favorites">Favorites</a>
+        </li>
+      </ul>
+    </nav>
+
+    <ul class="header_socials">
+      <li class="header_social">
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='28'%20height='28'%20viewBox='0%200%2028%2028'%20fill='none'%3e%3cpath%20d='M17.0799%204.06011C17.2899%204.06011%2017.4999%204.06011%2017.9199%204.06011V7.21011C17.7099%207.21011%2017.2899%207.21011%2016.8699%207.21011C16.4499%207.21011%2016.0299%207.21011%2015.8199%207.42011C15.6099%207.63011%2015.6099%207.84011%2015.6099%208.33011C15.6099%208.75011%2015.6099%209.03011%2015.6099%209.45011H17.9199V12.1101H15.6099V23.6601H12.0399V12.0401H10.1499V9.38011H12.0399V8.47011C12.0399%206.93011%2012.2499%205.81011%2012.6699%205.32011C13.2999%204.41011%2014.5599%203.99011%2016.4499%203.99011C16.6599%204.06011%2016.8699%204.06011%2017.0799%204.06011Z'%20fill='%23242424'/%3e%3c/svg%3e" alt="Facebook" />
+        </a>
+      </li>
+      <li class="header_social">
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='28'%20height='28'%20viewBox='0%200%2028%2028'%20fill='none'%3e%3cg%20opacity='0.8'%3e%3cpath%20d='M25.1279%209.41152C25.1142%208.47146%2024.9401%207.53885%2024.6067%206.65964C24.0233%205.15827%2022.8354%203.97109%2021.3315%203.38991C20.4621%203.06332%2019.5428%202.88822%2018.6124%202.86835C17.4158%202.81495%2017.0364%202.80005%2013.9988%202.80005C10.9612%202.80005%2010.5719%202.80005%209.38397%202.86835C8.45478%202.88822%207.53554%203.06332%206.66606%203.38991C5.1622%203.97109%203.97304%205.15827%203.3909%206.65964C3.06375%207.52767%202.88712%208.44538%202.86971%209.37302C2.81622%2010.5689%202.80005%2010.9477%202.80005%2013.9802C2.80005%2017.0127%202.80005%2017.4002%202.86971%2018.5873C2.88837%2019.5162%203.06375%2020.4327%203.3909%2021.3032C3.97428%2022.8033%205.1622%2023.9905%206.66731%2024.5717C7.53306%2024.9095%208.45229%2025.1007%209.38521%2025.1305C10.5831%2025.1839%2010.9625%2025.2001%2014.0001%2025.2001C17.0376%2025.2001%2017.427%2025.2001%2018.6149%2025.1305C19.5441%2025.1119%2020.4633%2024.9368%2021.334%2024.6102C22.8379%2024.0278%2024.0258%2022.8406%2024.6092%2021.3405C24.9363%2020.4712%2025.1117%2019.5547%2025.1304%2018.6246C25.1839%2017.43%2025.2001%2017.0512%2025.2001%2014.0174C25.1976%2010.9849%2025.1976%2010.5999%2025.1279%209.41152ZM13.9913%2019.7149C10.8144%2019.7149%208.24083%2017.1456%208.24083%2013.974C8.24083%2010.8024%2010.8144%208.23302%2013.9913%208.23302C17.1658%208.23302%2019.7419%2010.8024%2019.7419%2013.974C19.7419%2017.1456%2017.1658%2019.7149%2013.9913%2019.7149ZM19.9707%209.35936C19.2281%209.35936%2018.6298%208.7608%2018.6298%208.02067C18.6298%207.28055%2019.2281%206.68199%2019.9707%206.68199C20.7108%206.68199%2021.3104%207.28055%2021.3104%208.02067C21.3104%208.7608%2020.7108%209.35936%2019.9707%209.35936Z'%20fill='%23242424'/%3e%3cpath%20d='M13.993%2017.4789C15.9279%2017.4789%2017.4965%2015.9104%2017.4965%2013.9754C17.4965%2012.0405%2015.9279%2010.4719%2013.993%2010.4719C12.0581%2010.4719%2010.4895%2012.0405%2010.4895%2013.9754C10.4895%2015.9104%2012.0581%2017.4789%2013.993%2017.4789Z'%20fill='%23242424'/%3e%3c/g%3e%3c/svg%3e" alt="Instagram" />
+        </a>
+      </li>
+      <li class="header_social">
+        <a
+          href="https://www.youtube.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='28'%20height='28'%20viewBox='0%200%2028%2028'%20fill='none'%3e%3cg%20opacity='0.8'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M21.2101%205.24986C20.0201%205.17986%2017.5701%205.10986%2013.8601%205.10986H13.3701C9.8001%205.10986%207.42013%205.17986%206.23013%205.31986C4.62013%205.45986%203.5001%205.87986%202.8701%206.43986C2.3101%206.92986%201.89012%207.83986%201.75012%209.02986C1.68012%209.79986%201.61011%2011.4099%201.61011%2013.8599V14.2099C1.61011%2016.5199%201.6801%2018.1299%201.8201%2018.8999C2.0301%2020.0199%202.38013%2020.8599%203.08013%2021.3499C3.78013%2021.9099%204.97012%2022.2599%206.65012%2022.3999C7.84012%2022.4699%2010.2901%2022.5399%2014.0001%2022.5399H14.4901C18.0601%2022.5399%2020.4401%2022.4699%2021.6301%2022.3299C23.2401%2022.1899%2024.3601%2021.7699%2024.9901%2021.2099C25.5501%2020.7199%2025.9701%2019.8099%2026.1101%2018.6199C26.1801%2017.8499%2026.2501%2016.2399%2026.2501%2013.7899V13.4399C26.2501%2011.1299%2026.1801%209.51986%2026.0401%208.74986C25.8301%207.62986%2025.4801%206.78986%2024.7801%206.29986C24.0801%205.73986%2022.8901%205.38986%2021.2101%205.24986ZM18.4801%2013.8599L10.7801%2018.4799V9.23986L18.4801%2013.8599Z'%20fill='%23242424'/%3e%3c/g%3e%3c/svg%3e" alt="YouTube" />
+        </a>
+      </li>
+    </ul>
+
+    <button type="button" class="header_menu-btn" aria-label="Open menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <path d="M28 13.3334H4" stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M28 8H4" stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M28 18.6666H4" stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M28 24H4" stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__content">
+        <button type="button" class="mobile-menu__close" aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M8 8L24 24" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M24 8L8 24" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <nav class="mobile-menu__nav">
+          <a href="./index.html" class="mobile-menu__link" data-nav="home">Home</a>
+          <a href="./page-2.html" class="mobile-menu__link" data-nav="favorites">Favorites</a>
+        </nav>
+
+        <ul class="mobile-menu__socials">
+          <li class="mobile-menu__social">
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%3e%3cpath%20d='M14.6402%203.47992C14.8202%203.47992%2015.0002%203.47992%2015.3602%203.47992V6.17992C15.1802%206.17992%2014.8202%206.17992%2014.4602%206.17992C14.1002%206.17992%2013.7402%206.17992%2013.5602%206.35992C13.3802%206.53992%2013.3802%206.71992%2013.3802%207.13992C13.3802%207.49992%2013.3802%207.73992%2013.3802%208.09992H15.3602V10.3799H13.3802V20.2799H10.3202V10.3199H8.7002V8.03992H10.3202V7.25992C10.3202%205.93992%2010.5002%204.97992%2010.8602%204.55992C11.4002%203.77992%2012.4802%203.41992%2014.1002%203.41992C14.2802%203.47992%2014.4602%203.47992%2014.6402%203.47992Z'%20fill='%23F4F4F4'/%3e%3c/svg%3e" alt="Facebook" />
+            </a>
+          </li>
+          <li class="mobile-menu__social">
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%3e%3cg%20opacity='0.8'%3e%3cpath%20d='M21.5386%208.06687C21.5268%207.26111%2021.3776%206.46173%2021.0918%205.70812C20.5918%204.42124%2019.5736%203.40365%2018.2845%202.9055C17.5393%202.62556%2016.7513%202.47548%2015.9538%202.45845C14.9282%202.41268%2014.603%202.3999%2011.9993%202.3999C9.39568%202.3999%209.06196%202.3999%208.04375%202.45845C7.2473%202.47548%206.45939%202.62556%205.71412%202.9055C4.42509%203.40365%203.40581%204.42124%202.90683%205.70812C2.62642%206.45215%202.47502%207.23875%202.4601%208.03388C2.41425%209.05891%202.40039%209.38356%202.40039%2011.9829C2.40039%2014.5822%202.40039%2014.9143%202.4601%2015.9319C2.47609%2016.7281%202.62642%2017.5136%202.90683%2018.2598C3.40688%2019.5456%204.42509%2020.5632%205.71518%2021.0613C6.45725%2021.3508%207.24517%2021.5148%208.04482%2021.5403C9.07156%2021.5861%209.39675%2021.5999%2012.0004%2021.5999C14.604%2021.5999%2014.9378%2021.5999%2015.956%2021.5403C16.7524%2021.5243%2017.5403%2021.3742%2018.2867%2021.0943C19.5757%2020.5951%2020.5939%2019.5775%2021.094%2018.2917C21.3744%2017.5466%2021.5247%2016.7611%2021.5407%2015.9638C21.5865%2014.9398%2021.6004%2014.6152%2021.6004%2012.0148C21.5983%209.41549%2021.5983%209.08552%2021.5386%208.06687ZM11.9929%2016.8984C9.26987%2016.8984%207.06392%2014.6961%207.06392%2011.9776C7.06392%209.25902%209.26987%207.05674%2011.9929%207.05674C14.7139%207.05674%2016.9219%209.25902%2016.9219%2011.9776C16.9219%2014.6961%2014.7139%2016.8984%2011.9929%2016.8984ZM17.1181%208.02217C16.4816%208.02217%2015.9688%207.50912%2015.9688%206.87472C15.9688%206.24033%2016.4816%205.72728%2017.1181%205.72728C17.7525%205.72728%2018.2664%206.24033%2018.2664%206.87472C18.2664%207.50912%2017.7525%208.02217%2017.1181%208.02217Z'%20fill='%23F4F4F4'/%3e%3cpath%20d='M11.9942%2014.9821C13.6527%2014.9821%2014.9972%2013.6376%2014.9972%2011.9791C14.9972%2010.3206%2013.6527%208.97607%2011.9942%208.97607C10.3357%208.97607%208.99121%2010.3206%208.99121%2011.9791C8.99121%2013.6376%2010.3357%2014.9821%2011.9942%2014.9821Z'%20fill='%23F4F4F4'/%3e%3c/g%3e%3c/svg%3e" alt="Instagram" />
+            </a>
+          </li>
+          <li class="mobile-menu__social">
+            <a
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%3e%3cg%20opacity='0.8'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M18.1799%204.49988C17.1599%204.43988%2015.0599%204.37988%2011.8799%204.37988H11.4599C8.39988%204.37988%206.3599%204.43988%205.3399%204.55988C3.9599%204.67988%202.99988%205.03988%202.45988%205.51988C1.97988%205.93988%201.61989%206.71988%201.49989%207.73988C1.43989%208.39988%201.37988%209.77988%201.37988%2011.8799V12.1799C1.37988%2014.1599%201.43988%2015.5399%201.55988%2016.1999C1.73988%2017.1599%202.0399%2017.8799%202.6399%2018.2999C3.2399%2018.7799%204.25989%2019.0799%205.69989%2019.1999C6.71989%2019.2599%208.81989%2019.3199%2011.9999%2019.3199H12.4199C15.4799%2019.3199%2017.5199%2019.2599%2018.5399%2019.1399C19.9199%2019.0199%2020.8799%2018.6599%2021.4199%2018.1799C21.8999%2017.7599%2022.2599%2016.9799%2022.3799%2015.9599C22.4399%2015.2999%2022.4999%2013.9199%2022.4999%2011.8199V11.5199C22.4999%209.53988%2022.4399%208.15988%2022.3199%207.49988C22.1399%206.53988%2021.8399%205.81988%2021.2399%205.39988C20.6399%204.91988%2019.6199%204.61988%2018.1799%204.49988ZM15.8399%2011.8799L9.2399%2015.8399V7.91988L15.8399%2011.8799Z'%20fill='%23F4F4F4'/%3e%3c/g%3e%3c/svg%3e" alt="YouTube" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <section class="hero">
+    <div class="container hero__container">
+        <div class="hero__content">
+            <h1 class="hero__title">
+                <img class="hero__title-icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='38'%20height='38'%20viewBox='0%200%2038%2038'%20fill='none'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M16.9997%2016.1754L17.433%2016.6215L12.107%201.29404L18.2093%2015.6512L18.453%2016.2246L18.474%2015.6018L19%200L19.526%2015.6015L19.547%2016.2246L19.7906%2015.6515L25.893%201.29404L20.7716%2016.0328L20.567%2016.6215L21.0003%2016.1754L31.8551%205.00141L21.7779%2016.8869L21.3755%2017.3616L36.081%2010.6214L22.4091%2018.0484L21.8631%2018.345L22.4825%2018.3086L38%2017.395L21.964%2019.439L37.353%2024.4074L22.2672%2020.6459L21.6646%2020.4957L22.1469%2020.8878L34.2273%2030.7115L21.5132%2021.7311L21.0054%2021.3724L21.314%2021.913L29.0451%2035.456L20.4198%2022.4694L20.0753%2021.9507L22.5062%2038L19%2022.1526L15.4938%2038L17.8313%2022.5671L17.9247%2021.9507L17.5804%2022.4691L8.95494%2035.456L16.6858%2021.9133L16.9946%2021.3724L16.4871%2021.7309L3.77271%2030.7115L15.8529%2020.888L16.3354%2020.4957L15.7332%2020.6458L0.647022%2024.4074L15.445%2019.6298L16.036%2019.439L0%2017.395L16.1369%2018.345L15.5912%2018.0486L1.91903%2010.6214L16.6245%2017.3616L6.14495%205.00141L16.9997%2016.1754ZM18.1089%2016.853L17.3381%2017.3323L16.7918%2018.0589L16.5437%2018.9346L16.6273%2019.8411L17.0314%2020.6561L17.7014%2021.2695L18.5467%2021.5984H19.4533L20.2986%2021.2695L20.9686%2020.6561L21.3727%2019.8411L21.4563%2018.9346L21.2082%2018.0589L20.6619%2017.3323L19.8911%2016.853L19%2016.6857L18.1089%2016.853Z'%20fill='%23242424'/%3e%3c/svg%3e" alt="star icon"> Get <span
+                    class="hero__title-italic">Body</span> in <br> shape, Stay healthy
+            </h1>
+
+            <p class="hero__text">
+                Transform your physique and embrace a healthier lifestyle with <br class="hero__text-br"> our
+                comprehensive fitness and nutrition
+                support.
+            </p>
+        </div>
+
+        <div class="hero__img-wrapper">
+            <img src="/vanilla-app-template/assets/women-sportswear-working-out-outdoors-Dz8P5uDH.jpg" alt="Two girls doing workout">
+        </div>
+
+        <div class="hero__info">
+            <div class="hero__thumb-wrapper">
+                <img src="/vanilla-app-template/assets/Image_3-CxMyr4LU.jpg" alt="Workout thumbnail">
+            </div>
+            <ul class="hero__tags">
+                <li class="hero__tag">#Sport</li>
+                <li class="hero__tag">#Healthy</li>
+                <li class="hero__tag">#Workout</li>
+                <li class="hero__tag">#Diet</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+    <main>
+      <section class="exercises-section">
+        <div class="container">
+          <div class="exercises-inspiration-wrapper">
+            <section class="exercises">
+    <div class="exercises__container">
+        <div class="exercises__header">
+            <h2 class="exercises__title">Exercises<span id="exercisesCategoryTitle"></span></h2>
+
+            <div class="exercises__search" id="exercisesSearch" style="display: none;">
+                <input type="text" class="exercises__search-input" id="exercisesSearchInput" placeholder="Search">
+                <svg class="exercises__search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 18 18" fill="none">
+                    <path
+                        d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
+                        stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M15.7498 15.75L12.4873 12.4875" stroke="#242424" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+
+            <div class="exercises__tabs" id="exercisesTabs">
+                <button class="exercises__tab exercises__tab--active" data-filter="Muscles">
+                    Muscles
+                </button>
+                <button class="exercises__tab" data-filter="Body parts">
+                    Body parts
+                </button>
+                <button class="exercises__tab" data-filter="Equipment">
+                    Equipment
+                </button>
+            </div>
+        </div>
+
+        <ul class="exercises__list" id="exercisesList">
+
+        </ul>
+
+        <div class="exercises__pagination" id="exercisesPagination"></div>
+    </div>
+
+    <template id="exerciseCardTemplate">
+        <li class="exercises__item">
+            <article class="exercises__card exercises__card--category">
+                <img class="exercises__card-img" src="" alt="">
+                <div class="exercises__card-overlay">
+                    <h3 class="exercises__card-title"></h3>
+                    <p class="exercises__card-subtitle"></p>
+                </div>
+            </article>
+        </li>
+    </template>
+
+    <template id="exerciseDetailCardTemplate">
+        <li class="exercises__item exercises__item--detail">
+            <article class="exercises__detail-card" data-exercise-id="">
+                <div class="exercises__detail-header">
+                    <span class="exercises__detail-badge">WORKOUT</span>
+                    <div class="exercises__detail-rating">
+                        <span class="exercises__detail-rating-value"></span>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7 1.16675L8.8125 4.84175L12.8333 5.43341L9.91667 8.27508L10.625 12.2751L7 10.3667L3.375 12.2751L4.08333 8.27508L1.16667 5.43341L5.1875 4.84175L7 1.16675Z"
+                                fill="#EEA10C" stroke="#EEA10C" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <button class="exercises__detail-start" type="button">
+                        Start
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M7.5 14L14 7.5M14 7.5L7.5 1M14 7.5H1" stroke="currentColor" stroke-width="1.3"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="exercises__detail-body">
+                    <div class="exercises__detail-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="12" fill="#242424" />
+                            <path
+                                d="M18.8234 8.72544C18.6138 8.47504 18.2403 8.44212 17.9899 8.65092L16.349 10.0294L15.5943 8.15967C15.5675 8.08949 15.5267 8.03057 15.4799 7.97859C15.3257 7.63549 15.058 7.34091 14.6889 7.17023C14.5286 7.09745 14.3631 7.05846 14.1977 7.0394C14.1613 7.02034 14.1283 6.99521 14.0868 6.98222L11.199 6.17732C11.037 6.13314 10.8741 6.16173 10.7407 6.2397C10.5821 6.29342 10.4461 6.40865 10.3811 6.57587L9.29378 9.37178C9.17594 9.67589 9.3267 10.019 9.63168 10.1386C9.93492 10.2564 10.2789 10.1048 10.3976 9.79978L11.316 7.43882L12.6312 7.80444C12.5991 7.85643 12.5645 7.90495 12.5385 7.9604L10.8524 11.6149C10.8282 11.6686 10.8152 11.7232 10.7979 11.7787L8.7488 15.214L5.31955 16.3611C4.9314 16.6514 4.84909 17.1981 5.13587 17.5862C5.42439 17.9752 5.97282 18.0575 6.36011 17.7708L9.86907 16.5621C9.97651 16.4841 10.0545 16.3819 10.1134 16.2719C10.1576 16.2251 10.2078 16.1878 10.2416 16.1298L11.4633 14.0816L13.6319 15.9296L11.3116 18.5445C10.9919 18.9049 11.024 19.4603 11.3862 19.7791C11.7474 20.1005 12.3011 20.0667 12.6225 19.7046L15.5181 16.4426C15.6082 16.342 15.6619 16.2259 15.6983 16.1047C15.7199 16.0388 15.7199 15.9704 15.7251 15.9019C15.7251 15.8673 15.7381 15.8361 15.7355 15.804C15.7277 15.5649 15.6307 15.3327 15.4349 15.1672L13.4395 13.4656C13.5834 13.3287 13.7055 13.1658 13.7939 12.9743L15.0866 10.1749L15.5007 11.2779C15.5181 11.3758 15.551 11.472 15.6203 11.5525C15.6827 11.627 15.7624 11.6764 15.8473 11.7111C15.856 11.7154 15.8664 11.7163 15.8768 11.7189C15.9305 11.7379 15.9851 11.7561 16.0414 11.7587C16.1081 11.7648 16.1757 11.7561 16.2441 11.7371C16.2459 11.7362 16.2467 11.7362 16.2467 11.7362C16.2649 11.7319 16.2831 11.7353 16.3013 11.7275C16.3975 11.6912 16.4711 11.6296 16.5344 11.5577L18.8893 9.55892C19.1397 9.34838 19.034 8.97583 18.8234 8.72544Z"
+                                fill="#F4F4F4" />
+                            <path
+                                d="M15.8448 7.30102C16.7564 7.30102 17.4954 6.56206 17.4954 5.65051C17.4954 4.73896 16.7564 4 15.8448 4C14.9333 4 14.1943 4.73896 14.1943 5.65051C14.1943 6.56206 14.9333 7.30102 15.8448 7.30102Z"
+                                fill="#F4F4F4" />
+                        </svg>
+                    </div>
+                    <h3 class="exercises__detail-title"></h3>
+                </div>
+                <div class="exercises__detail-footer">
+                    <p class="exercises__detail-info">
+                        <span class="exercises__detail-info-label">Burned calories:</span>
+                        <span class="exercises__detail-info-value exercises__detail-calories"></span>
+                    </p>
+                    <p class="exercises__detail-info">
+                        <span class="exercises__detail-info-label">Body part:</span>
+                        <span class="exercises__detail-info-value exercises__detail-bodypart"></span>
+                    </p>
+                    <p class="exercises__detail-info">
+                        <span class="exercises__detail-info-label">Target:</span>
+                        <span class="exercises__detail-info-value exercises__detail-target"></span>
+                    </p>
+                </div>
+            </article>
+        </li>
+    </template>
+
+    <div class="exercises__modal" id="exerciseModal" aria-hidden="true">
+        <div class="exercises__modal-backdrop" data-modal-close></div>
+        <div class="exercises__modal-content" role="dialog" aria-modal="true" aria-labelledby="exerciseModalTitle">
+            <button class="exercises__modal-close" type="button" aria-label="Close" data-modal-close>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="exercises__modal-body">
+                <div class="exercises__modal-media">
+                    <img class="exercises__modal-img" id="exerciseModalImg" src="" alt="">
+                </div>
+                <div class="exercises__modal-info">
+                    <h3 class="exercises__modal-title" id="exerciseModalTitle"></h3>
+                    <div class="exercises__modal-rating">
+                        <span class="exercises__modal-rating-value" id="exerciseModalRatingValue"></span>
+                        <div class="exercises__modal-stars" id="exerciseModalStars" aria-hidden="true">
+                            <span class="exercises__modal-star"></span>
+                            <span class="exercises__modal-star"></span>
+                            <span class="exercises__modal-star"></span>
+                            <span class="exercises__modal-star"></span>
+                            <span class="exercises__modal-star"></span>
+                        </div>
+                    </div>
+                    <div class="exercises__modal-divider"></div>
+                    <div class="exercises__modal-meta">
+                        <div class="exercises__modal-meta-item">
+                            <span class="exercises__modal-meta-label">Target</span>
+                            <span class="exercises__modal-meta-value" id="exerciseModalTarget"></span>
+                        </div>
+                        <div class="exercises__modal-meta-item">
+                            <span class="exercises__modal-meta-label">Body Part</span>
+                            <span class="exercises__modal-meta-value" id="exerciseModalBodyPart"></span>
+                        </div>
+                        <div class="exercises__modal-meta-item">
+                            <span class="exercises__modal-meta-label">Equipment</span>
+                            <span class="exercises__modal-meta-value" id="exerciseModalEquipment"></span>
+                        </div>
+                        <div class="exercises__modal-meta-item">
+                            <span class="exercises__modal-meta-label">Popular</span>
+                            <span class="exercises__modal-meta-value" id="exerciseModalPopularity"></span>
+                        </div>
+                        <div class="exercises__modal-meta-item exercises__modal-meta-item--calories">
+                            <span class="exercises__modal-meta-label">Burned calories</span>
+                            <span class="exercises__modal-meta-value" id="exerciseModalCalories"></span>
+                        </div>
+                    </div>
+                    <div class="exercises__modal-divider"></div>
+                    <p class="exercises__modal-description" id="exerciseModalDescription"></p>
+                    <div class="exercises__modal-actions">
+                        <button class="exercises__modal-btn exercises__modal-btn--primary" type="button">
+                            <span class="exercises__modal-btn-text">Add to favorites</span>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 15.5L7.9125 14.52C4.05 11.09 1.5 8.84 1.5 6.1C1.5 3.85 3.3 2.1 5.55 2.1C6.82 2.1 8.04 2.69 8.85 3.62C9.66 2.69 10.88 2.1 12.15 2.1C14.4 2.1 16.2 3.85 16.2 6.1C16.2 8.84 13.65 11.09 9.7875 14.52L9 15.5Z"
+                                    stroke="currentColor" stroke-width="1.2" fill="none" />
+                            </svg>
+                        </button>
+                        <button class="exercises__modal-btn exercises__modal-btn--outline" type="button" id="exerciseModalRatingBtn">
+                            Give a rating
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="exercises__modal-loading" id="exerciseModalLoading">Loading...</div>
+            <div class="exercises__modal-error" id="exerciseModalError"></div>
+        </div>
+    </div>
+
+    <div class="exercises__modal exercises__modal--rating" id="ratingModal" aria-hidden="true">
+        <div class="exercises__modal-backdrop" data-modal-close></div>
+        <div class="exercises__modal-content" role="dialog" aria-modal="true" aria-labelledby="ratingModalTitle">
+            <button class="exercises__modal-close" type="button" aria-label="Close" data-modal-close>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="exercises__rating-body">
+                <p class="exercises__rating-label" id="ratingModalTitle">Rating</p>
+                <div class="exercises__rating-row">
+                    <span class="exercises__rating-value" id="ratingModalValue">0.0</span>
+                    <div class="exercises__rating-stars" id="ratingModalStars" aria-hidden="true">
+                        <button class="exercises__rating-star" type="button" data-value="1" aria-label="1 star"></button>
+                        <button class="exercises__rating-star" type="button" data-value="2" aria-label="2 stars"></button>
+                        <button class="exercises__rating-star" type="button" data-value="3" aria-label="3 stars"></button>
+                        <button class="exercises__rating-star" type="button" data-value="4" aria-label="4 stars"></button>
+                        <button class="exercises__rating-star" type="button" data-value="5" aria-label="5 stars"></button>
+                    </div>
+                </div>
+                <form class="exercises__rating-form" id="ratingModalForm">
+                    <input class="exercises__rating-input" id="ratingEmailInput" type="email" placeholder="Email">
+                    <textarea class="exercises__rating-textarea" id="ratingReviewInput" placeholder="Your comment"></textarea>
+                    <button class="exercises__modal-btn exercises__modal-btn--primary exercises__rating-submit" type="submit"
+                        id="ratingSubmitBtn">
+                        Send
+                    </button>
+                </form>
+                <div class="exercises__modal-loading" id="ratingModalLoading">Loading...</div>
+                <div class="exercises__modal-error" id="ratingModalError"></div>
+            </div>
+        </div>
+    </div>
+</section>
+            <section class="inspiration">
+    <div class="inspiration__quoteBlock">
+        <div class="inspiration__quoteBlock__text">
+            <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='34'%20height='32'%20viewBox='0%200%2034%2032'%20fill='none'%3e%3ccircle%20cx='16'%20cy='16'%20r='16'%20fill='%23F4F4F4'%20fill-opacity='0.2'/%3e%3cpath%20d='M24.7293%2011.907C24.4611%2011.594%2023.9834%2011.5528%2023.6631%2011.8138L21.5637%2013.5369L20.5983%2011.1998C20.564%2011.1121%2020.5119%2011.0384%2020.452%2010.9734C20.2547%2010.5446%2019.9122%2010.1763%2019.44%209.96297C19.235%209.872%2019.0233%209.82326%2018.8116%209.79944C18.765%209.77561%2018.7229%209.7442%2018.6697%209.72796L14.9754%208.72184C14.7681%208.6666%2014.5597%208.70234%2014.3891%208.79981C14.1862%208.86696%2014.0122%209.011%2013.9291%209.22002L12.538%2012.7149C12.3873%2013.0951%2012.5801%2013.5239%2012.9703%2013.6734C13.3582%2013.8207%2013.7983%2013.6311%2013.9501%2013.2499L15.125%2010.2987L16.8076%2010.7557C16.7666%2010.8207%2016.7222%2010.8814%2016.689%2010.9507L14.532%2015.5188C14.501%2015.586%2014.4844%2015.6542%2014.4622%2015.7235L11.8408%2020.0177L7.45378%2021.4516C6.95721%2021.8144%206.85192%2022.4978%207.2188%2022.983C7.5879%2023.4692%208.28951%2023.5721%208.78497%2023.2137L13.274%2021.7029C13.4114%2021.6054%2013.5112%2021.4776%2013.5866%2021.34C13.6431%2021.2816%2013.7074%2021.235%2013.7506%2021.1624L15.3135%2018.6022L18.0878%2020.9123L15.1195%2024.1808C14.7105%2024.6313%2014.7515%2025.3255%2015.2148%2025.7241C15.677%2026.1259%2016.3853%2026.0836%2016.7965%2025.6309L20.5008%2021.5534C20.6161%2021.4278%2020.6848%2021.2826%2020.7313%2021.131C20.759%2021.0487%2020.759%2020.9632%2020.7657%2020.8776C20.7657%2020.8343%2020.7823%2020.7953%2020.779%2020.7552C20.769%2020.4563%2020.6449%2020.1661%2020.3944%2019.9592L17.8417%2017.8322C18.0257%2017.661%2018.182%2017.4574%2018.2951%2017.2181L19.9488%2013.7189L20.4786%2015.0975C20.5008%2015.2199%2020.5429%2015.3401%2020.6316%2015.4409C20.7114%2015.534%2020.8134%2015.5957%2020.922%2015.6391C20.9331%2015.6445%2020.9464%2015.6456%2020.9597%2015.6488C21.0284%2015.6726%2021.0982%2015.6954%2021.1703%2015.6986C21.2556%2015.7062%2021.3421%2015.6954%2021.4296%2015.6715C21.4318%2015.6705%2021.4329%2015.6705%2021.4329%2015.6705C21.4562%2015.665%2021.4795%2015.6694%2021.5028%2015.6596C21.6258%2015.6141%2021.72%2015.5372%2021.8009%2015.4474L24.8136%2012.9488C25.1339%2012.6857%2024.9987%2012.22%2024.7293%2011.907Z'%20fill='%23F4F4F4'/%3e%3cpath%20d='M20.9191%2010.1263C22.0853%2010.1263%2023.0306%209.20259%2023.0306%208.06314C23.0306%206.9237%2022.0853%206%2020.9191%206C19.753%206%2018.8076%206.9237%2018.8076%208.06314C18.8076%209.20259%2019.753%2010.1263%2020.9191%2010.1263Z'%20fill='%23F4F4F4'/%3e%3c/svg%3e" alt="A running man">
+
+            <div class="inspiration__quoteBlock__text__content">
+                <p class="inspiration__quoteBlock__text__title">
+                    Quote of the day
+                </p>
+
+                <p class="inspiration__quoteBlock__text_quote">
+                    A lot of times I find that people who are blessed with the most talent don't ever develop that
+                    attitude,
+                    and the ones who aren't blessed in that way are the most competitive and have the biggest heart.
+                </p>
+            </div>
+        </div>
+
+        <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%3e%3cpath%20d='M5.12532%2010.918C6.09146%2010.5352%206.8662%2010.6354%207.44954%2011.2188C8.03288%2011.8021%208.20604%2012.7318%207.96906%2014.0078C7.78678%2014.9557%207.38574%2015.6849%206.76594%2016.1953C6.16438%2016.6875%205.46256%2016.9336%204.66048%2016.9336C3.56672%2016.9336%202.81022%2016.5143%202.39094%2015.6758C1.97167%2014.819%201.88964%2013.6706%202.14485%2012.2305C2.29068%2011.4466%202.52766%2010.6537%202.85578%209.85155C3.18392%209.04947%203.62142%208.22917%204.16828%207.39063C4.71516%206.55209%205.4261%205.82291%206.3011%205.20313C7.1761%204.58333%208.14224%204.18229%209.19954%204L8.9261%206.89843C8.03288%207.08073%207.2399%207.54557%206.5472%208.29297C5.85448%209.02213%205.38052%209.89713%205.12532%2010.918ZM13.3558%2010.918C14.3219%2010.5352%2015.0967%2010.6354%2015.68%2011.2188C16.2633%2011.8021%2016.4365%2012.7318%2016.1995%2014.0078C16.0172%2014.9557%2015.6162%2015.6849%2014.9964%2016.1953C14.3949%2016.6875%2013.693%2016.9336%2012.8909%2016.9336C11.7972%2016.9336%2011.0407%2016.5143%2010.6214%2015.6758C10.2021%2014.819%2010.1201%2013.6706%2010.3753%2012.2305C10.5212%2011.4466%2010.7581%2010.6537%2011.0863%209.85155C11.4144%209.04947%2011.8519%208.22917%2012.3988%207.39063C12.9456%206.55209%2013.6566%205.82291%2014.5316%205.20313C15.4066%204.58333%2016.3727%204.18229%2017.43%204L17.1566%206.89843C16.2633%207.08073%2015.4704%207.54557%2014.7777%208.29297C14.085%209.02213%2013.611%209.89713%2013.3558%2010.918Z'%20fill='%23F4F4F4'/%3e%3c/svg%3e" alt="">
+
+        <p class="inspiration__quoteBlock__author">
+            Tom Brady
+        </p>
+    </div>
+
+    <div class="inspiration__image">
+        <img src="/vanilla-app-template/assets/Image_2-DuyFT9mk.jpg" alt="two women drinking water">
+    </div>
+
+    <div class="inspiration__news">
+        <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%3e%3cpath%20d='M4.6%205.71429H3.4C3.0675%205.71429%202.8%206.00089%202.8%206.35714V9.14286H2.2C2.09%209.14286%202%209.23929%202%209.35714V10.6429C2%2010.7607%202.09%2010.8571%202.2%2010.8571H2.8V13.6429C2.8%2013.9991%203.0675%2014.2857%203.4%2014.2857H4.6C4.9325%2014.2857%205.2%2013.9991%205.2%2013.6429V6.35714C5.2%206.00089%204.9325%205.71429%204.6%205.71429ZM17.8%209.14286H17.2V6.35714C17.2%206.00089%2016.9325%205.71429%2016.6%205.71429H15.4C15.0675%205.71429%2014.8%206.00089%2014.8%206.35714V13.6429C14.8%2013.9991%2015.0675%2014.2857%2015.4%2014.2857H16.6C16.9325%2014.2857%2017.2%2013.9991%2017.2%2013.6429V10.8571H17.8C17.91%2010.8571%2018%2010.7607%2018%2010.6429V9.35714C18%209.23929%2017.91%209.14286%2017.8%209.14286ZM13.4%204H12.2C11.8675%204%2011.6%204.28661%2011.6%204.64286V9.14286H8.4V4.64286C8.4%204.28661%208.1325%204%207.8%204H6.6C6.2675%204%206%204.28661%206%204.64286V15.3571C6%2015.7134%206.2675%2016%206.6%2016H7.8C8.1325%2016%208.4%2015.7134%208.4%2015.3571V10.8571H11.6V15.3571C11.6%2015.7134%2011.8675%2016%2012.2%2016H13.4C13.7325%2016%2014%2015.7134%2014%2015.3571V4.64286C14%204.28661%2013.7325%204%2013.4%204Z'%20fill='%23F4F4F4'/%3e%3c/svg%3e" alt="">
+
+        <div class="inspiration__news__text">
+            <p class="inspiration__news__text__title">
+                110 min
+            </p>
+
+            <p class="inspiration__news__text__subtitle">
+                Daily norm of sports
+            </p>
+        </div>
+
+        <p class="inspiration__news__text__news">
+            The World Health Organization recommends at least 150 minutes of moderate-intensity aerobic physical
+            activity throughout the week for adults aged 18-64. However, what happens if we adjust that number to
+            110 minutes every day? While it might seem like a high number to hit, dedicating 110 minutes daily to
+            sporting activities may offer unparalleled benefits to physical health, mental well-being, and overall
+            quality of life.
+        </p>
+    </div>
+</section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+    <div class="footer__container">
+        <div class="footer__top">
+            <a href="#" class="footer__logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="132" height="14" viewBox="0 0 132 14" fill="none">
+                    <path d="M4.98 8.28L0 0H2.98L6.32 5.74H6.36L9.7 0H12.68L7.7 8.28V14H4.98V8.28Z" fill="#F4F4F4" />
+                    <path
+                        d="M12.6703 11.7V2.3L14.9703 0H22.1703L24.4703 2.3V11.7L22.1703 14H14.9703L12.6703 11.7ZM20.7303 11.68L21.7503 10.66V3.34L20.7303 2.32H16.4103L15.3903 3.34V10.66L16.4103 11.68H20.7303Z"
+                        fill="#F4F4F4" />
+                    <path
+                        d="M26.3742 11.6V0H29.0942V10.66L30.1142 11.68H34.0342L35.0542 10.66V0H37.7742V11.6L35.3742 14H28.7742L26.3742 11.6Z"
+                        fill="#F4F4F4" />
+                    <path
+                        d="M50.8781 9.36V14H48.1581V9.98L46.9581 8.64H42.5981V14H39.8781V0H48.6581L50.7981 2.16V6.4L49.4381 7.78L50.8781 9.36ZM42.5981 6.4H47.4181L48.1181 5.7V2.98L47.4181 2.28H42.5981V6.4Z"
+                        fill="#F4F4F4" />
+                    <path d="M57.8234 0H67.9434V2.3H60.5434V5.84H67.3634V8.1H60.5434V11.7H67.9434V14H57.8234V0Z"
+                        fill="#F4F4F4" />
+                    <path
+                        d="M69.4523 0H71.8923L78.1323 9.5H78.1723V0H80.7923V14H78.3523L72.1123 4.52H72.0723V14H69.4523V0Z"
+                        fill="#F4F4F4" />
+                    <path d="M82.8977 0H93.0177V2.3H85.6177V5.84H92.4377V8.1H85.6177V11.7H93.0177V14H82.8977V0Z"
+                        fill="#F4F4F4" />
+                    <path
+                        d="M105.527 9.36V14H102.807V9.98L101.607 8.64H97.2466V14H94.5266V0H103.307L105.447 2.16V6.4L104.087 7.78L105.527 9.36ZM97.2466 6.4H102.067L102.767 5.7V2.98L102.067 2.28H97.2466V6.4Z"
+                        fill="#F4F4F4" />
+                    <path
+                        d="M107.323 11.7V2.3L109.623 0H116.583L118.843 2.26V4.4H116.123V3.26L115.183 2.32H111.063L110.043 3.34V10.66L111.063 11.68H115.223L116.203 10.7V8.52H113.203V6.2H118.843V11.7L116.543 14H109.623L107.323 11.7Z"
+                        fill="#F4F4F4" />
+                    <path
+                        d="M123.828 8.28L118.848 0H121.828L125.168 5.74H125.208L128.548 0H131.528L126.548 8.28V14H123.828V8.28Z"
+                        fill="#F4F4F4" />
+                </svg>
+            </a>
+            <ul class="footer__socials">
+                <li class="footer__social-item">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Facebook">
+                        <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%3e%3cpath%20d='M14.6402%203.47992C14.8202%203.47992%2015.0002%203.47992%2015.3602%203.47992V6.17992C15.1802%206.17992%2014.8202%206.17992%2014.4602%206.17992C14.1002%206.17992%2013.7402%206.17992%2013.5602%206.35992C13.3802%206.53992%2013.3802%206.71992%2013.3802%207.13992C13.3802%207.49992%2013.3802%207.73992%2013.3802%208.09992H15.3602V10.3799H13.3802V20.2799H10.3202V10.3199H8.7002V8.03992H10.3202V7.25992C10.3202%205.93992%2010.5002%204.97992%2010.8602%204.55992C11.4002%203.77992%2012.4802%203.41992%2014.1002%203.41992C14.2802%203.47992%2014.4602%203.47992%2014.6402%203.47992Z'%20fill='%23F4F4F4'/%3e%3c/svg%3e" alt="Facebook" class="footer__social-icon" width="40"
+                            height="40">
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Instagram">
+                        <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%3e%3cg%20opacity='0.8'%3e%3cpath%20d='M21.5386%208.06687C21.5268%207.26111%2021.3776%206.46173%2021.0918%205.70812C20.5918%204.42124%2019.5736%203.40365%2018.2845%202.9055C17.5393%202.62556%2016.7513%202.47548%2015.9538%202.45845C14.9282%202.41268%2014.603%202.3999%2011.9993%202.3999C9.39568%202.3999%209.06196%202.3999%208.04375%202.45845C7.2473%202.47548%206.45939%202.62556%205.71412%202.9055C4.42509%203.40365%203.40581%204.42124%202.90683%205.70812C2.62642%206.45215%202.47502%207.23875%202.4601%208.03388C2.41425%209.05891%202.40039%209.38356%202.40039%2011.9829C2.40039%2014.5822%202.40039%2014.9143%202.4601%2015.9319C2.47609%2016.7281%202.62642%2017.5136%202.90683%2018.2598C3.40688%2019.5456%204.42509%2020.5632%205.71518%2021.0613C6.45725%2021.3508%207.24517%2021.5148%208.04482%2021.5403C9.07156%2021.5861%209.39675%2021.5999%2012.0004%2021.5999C14.604%2021.5999%2014.9378%2021.5999%2015.956%2021.5403C16.7524%2021.5243%2017.5403%2021.3742%2018.2867%2021.0943C19.5757%2020.5951%2020.5939%2019.5775%2021.094%2018.2917C21.3744%2017.5466%2021.5247%2016.7611%2021.5407%2015.9638C21.5865%2014.9398%2021.6004%2014.6152%2021.6004%2012.0148C21.5983%209.41549%2021.5983%209.08552%2021.5386%208.06687ZM11.9929%2016.8984C9.26987%2016.8984%207.06392%2014.6961%207.06392%2011.9776C7.06392%209.25902%209.26987%207.05674%2011.9929%207.05674C14.7139%207.05674%2016.9219%209.25902%2016.9219%2011.9776C16.9219%2014.6961%2014.7139%2016.8984%2011.9929%2016.8984ZM17.1181%208.02217C16.4816%208.02217%2015.9688%207.50912%2015.9688%206.87472C15.9688%206.24033%2016.4816%205.72728%2017.1181%205.72728C17.7525%205.72728%2018.2664%206.24033%2018.2664%206.87472C18.2664%207.50912%2017.7525%208.02217%2017.1181%208.02217Z'%20fill='%23F4F4F4'/%3e%3cpath%20d='M11.9942%2014.9821C13.6527%2014.9821%2014.9972%2013.6376%2014.9972%2011.9791C14.9972%2010.3206%2013.6527%208.97607%2011.9942%208.97607C10.3357%208.97607%208.99121%2010.3206%208.99121%2011.9791C8.99121%2013.6376%2010.3357%2014.9821%2011.9942%2014.9821Z'%20fill='%23F4F4F4'/%3e%3c/g%3e%3c/svg%3e" alt="Instagram" class="footer__social-icon"
+                            width="40" height="40">
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="YouTube">
+                        <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%3e%3cg%20opacity='0.8'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M18.1799%204.49988C17.1599%204.43988%2015.0599%204.37988%2011.8799%204.37988H11.4599C8.39988%204.37988%206.3599%204.43988%205.3399%204.55988C3.9599%204.67988%202.99988%205.03988%202.45988%205.51988C1.97988%205.93988%201.61989%206.71988%201.49989%207.73988C1.43989%208.39988%201.37988%209.77988%201.37988%2011.8799V12.1799C1.37988%2014.1599%201.43988%2015.5399%201.55988%2016.1999C1.73988%2017.1599%202.0399%2017.8799%202.6399%2018.2999C3.2399%2018.7799%204.25989%2019.0799%205.69989%2019.1999C6.71989%2019.2599%208.81989%2019.3199%2011.9999%2019.3199H12.4199C15.4799%2019.3199%2017.5199%2019.2599%2018.5399%2019.1399C19.9199%2019.0199%2020.8799%2018.6599%2021.4199%2018.1799C21.8999%2017.7599%2022.2599%2016.9799%2022.3799%2015.9599C22.4399%2015.2999%2022.4999%2013.9199%2022.4999%2011.8199V11.5199C22.4999%209.53988%2022.4399%208.15988%2022.3199%207.49988C22.1399%206.53988%2021.8399%205.81988%2021.2399%205.39988C20.6399%204.91988%2019.6199%204.61988%2018.1799%204.49988ZM15.8399%2011.8799L9.2399%2015.8399V7.91988L15.8399%2011.8799Z'%20fill='%23F4F4F4'/%3e%3c/g%3e%3c/svg%3e" alt="YouTube" class="footer__social-icon" width="40"
+                            height="40">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer__subscribe">
+            <h2 class="footer__subscribe-title">
+                Transforming your<span class="footer__break-mobile"></span> <em>body</em><span
+                    class="footer__break-desktop"></span> shape<span class="footer__break-tablet"></span> with us
+            </h2>
+            <p class="footer__subscribe-text">Subscribe and learn about new exercises!</p>
+        </div>
+
+        <div class="footer__form-wrapper">
+            <p class="footer__form-text">Subscribe and learn about new exercises!</p>
+            <form class="footer__form" id="footerSubscribeForm">
+                <label class="footer__input-wrapper">
+                    <input type="email" class="footer__input" id="footerSubscribeInput" name="email"
+                        placeholder="Email" autocomplete="email" required>
+                </label>
+                <button type="submit" class="footer__submit-btn">Send</button>
+            </form>
+            <p class="footer__form-message" id="footerSubscribeMessage" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="footer__bottom">
+            <p class="footer__copyright-text">Your Energy. All rights reserved.</p>
+            <div class="footer__bottom-row">
+                <nav class="footer__nav">
+                    <a href="#" class="footer__nav-link">Privacy Policy</a>
+                    <span class="footer__nav-divider">/</span>
+                    <a href="#" class="footer__nav-link">Terms of Service</a>
+                </nav>
+                <span class="footer__year">©2023</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+  </body>
+</html>

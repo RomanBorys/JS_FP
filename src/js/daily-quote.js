@@ -1,10 +1,21 @@
 const API_BASE_URL = 'https://your-energy.b.goit.study/api';
 const QUOTE_ENDPOINT = `${API_BASE_URL}/quote`;
 
+const LS_QUOTE_KEY = 'dailyQuote:data';
+const LS_QUOTE_DATE_KEY = 'dailyQuote:date';
+
 let quoteBlockEl;
 let quoteImageWrapEl;
 let quoteImageEl;
 let quoteResizeObserver;
+
+function todayKey() {
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
 
 function syncQuoteImageHeight() {
   if (!quoteBlockEl || !quoteImageWrapEl) return;
@@ -33,6 +44,28 @@ function updateQuote(data) {
   requestAnimationFrame(syncQuoteImageHeight);
 }
 
+function readCachedQuoteIfToday() {
+  try {
+    const savedDate = localStorage.getItem(LS_QUOTE_DATE_KEY);
+    const saved = localStorage.getItem(LS_QUOTE_KEY);
+
+    if (savedDate === todayKey() && saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed && typeof parsed === 'object') return parsed;
+    }
+  } catch (e) {
+  }
+  return null;
+}
+
+function saveQuoteToCache(data) {
+  try {
+    localStorage.setItem(LS_QUOTE_DATE_KEY, todayKey());
+    localStorage.setItem(LS_QUOTE_KEY, JSON.stringify(data));
+  } catch (e) {
+  }
+}
+
 async function fetchQuote() {
   try {
     const response = await fetch(QUOTE_ENDPOINT, {
@@ -44,7 +77,10 @@ async function fetchQuote() {
     }
 
     const data = await response.json();
-    updateQuote(data);
+    if (data) {
+      saveQuoteToCache(data);
+      updateQuote(data);
+    }
   } catch (error) {
     console.error('Error fetching quote:', error);
   }
@@ -70,6 +106,12 @@ function initQuote() {
     quoteResizeObserver.observe(quoteBlockEl);
   } else {
     window.addEventListener('resize', syncQuoteImageHeight);
+  }
+
+  const cached = readCachedQuoteIfToday();
+  if (cached) {
+    updateQuote(cached);
+    return;
   }
 
   fetchQuote();

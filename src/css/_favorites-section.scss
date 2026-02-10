@@ -507,3 +507,58 @@
 .favourites .inspiration__image {
   display: none;
 }
+
+/* ===== FIX inspiration spacing on Favorites ===== */
+.favourites .inspiration {
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 0 !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* На всяк випадок прибираємо нижні відступи в блоків quote на favourites */
+.favourites .inspiration__quoteBlock {
+  margin-bottom: 0 !important;
+}
+
+/* Якщо на tablet ти хочеш маленький gap між quote і cards */
+@media screen and (min-width: 768px) {
+  .favourites__left {
+    gap: 16px; /* як у тебе в макеті */
+  }
+}
+
+/* FIX: inspiration не має мати фіксовану висоту на Favorites */
+@media screen and (min-width: 1440px) {
+  .favourites .inspiration {
+    flex: 0 0 auto !important; /* прибирає 444px висоту */
+    height: auto !important;
+    width: 100% !important;   /* під твою ліву колонку 494px */
+    max-width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* щоб і цитата, і нижні карточки були по одній лінії */
+.favourites__left {
+  align-items: stretch; /* або flex-start, але stretch вирівнює ширину дітей */
+}
+
+.favourites__left .inspiration {
+  width: 100%;
+}
+
+.favourites__left .inspiration .container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0; /* важливо: прибирає внутрішні відступи контейнера */
+}
+
+/* нижні карточки теж на всю ширину лівого блоку */
+.favourites__cards {
+  width: 100%;
+}

@@ -26,6 +26,7 @@ let tabButtons;
 let exercisesTabs;
 let exercisesSearch;
 let exercisesSearchInput;
+let exercisesSearchForm;
 let exercisesCategoryTitle;
 
 let exerciseModal;
@@ -64,10 +65,7 @@ async function fetchFilters(filter, page = 1) {
     });
 
     const response = await fetch(`${API_ENDPOINTS.filters}?${params}`);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     return await response.json();
   } catch (error) {
@@ -84,23 +82,14 @@ async function fetchExercisesByCategory(category, filterType, page = 1, keyword 
       limit: String(getPerPage()),
     });
 
-    if (filterType === 'Muscles') {
-      params.append('muscles', category);
-    } else if (filterType === 'Body parts') {
-      params.append('bodypart', category);
-    } else if (filterType === 'Equipment') {
-      params.append('equipment', category);
-    }
+    if (filterType === 'Muscles') params.append('muscles', category);
+    else if (filterType === 'Body parts') params.append('bodypart', category);
+    else if (filterType === 'Equipment') params.append('equipment', category);
 
-    if (keyword) {
-      params.append('keyword', keyword);
-    }
+    if (keyword) params.append('keyword', keyword);
 
     const response = await fetch(`${API_ENDPOINTS.exercises}?${params}`);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     return await response.json();
   } catch (error) {
@@ -113,17 +102,14 @@ async function fetchExercisesByCategory(category, filterType, page = 1, keyword 
 async function fetchExerciseById(exerciseId) {
   try {
     const response = await fetch(`${API_ENDPOINTS.exercises}/${exerciseId}`);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     return await response.json();
   } catch (error) {
     console.error('Error fetching exercise detail:', error);
     return null;
   }
 }
+
 
 async function submitExerciseRating(exerciseId, payload) {
   const response = await fetch(`${API_ENDPOINTS.exercises}/${exerciseId}/rating`, {
@@ -137,11 +123,41 @@ async function submitExerciseRating(exerciseId, payload) {
   const data = hasJson ? await response.json() : null;
 
   if (!response.ok) {
-    const message = data && data.message ? data.message : 'Failed to submit rating. Please try again later.';
+    const message = data?.message || 'Failed to submit rating. Please try again later.';
     throw new Error(message);
   }
 
   return data;
+}
+
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function showLoading() {
+  if (exercisesList) exercisesList.innerHTML = '<li class="exercises__loading">Loading...</li>';
+}
+
+function hideLoading() {}
+
+function showError(message) {
+  if (exercisesList) exercisesList.innerHTML = `<li class="exercises__error">${message}</li>`;
+}
+
+function updateUIForCategoryView() {
+  if (exercisesCategoryTitle) exercisesCategoryTitle.textContent = '';
+  if (exercisesSearch) exercisesSearch.style.display = 'none';
+  if (exercisesTabs) exercisesTabs.style.display = '';
+  if (exercisesSearchInput) exercisesSearchInput.value = '';
+}
+
+function updateUIForDetailView(categoryName) {
+  if (exercisesCategoryTitle) {
+    exercisesCategoryTitle.innerHTML = ` / <span class="exercises__category-name">${capitalizeFirstLetter(
+      categoryName
+    )}</span>`;
+  }
+  if (exercisesSearch) exercisesSearch.style.display = '';
 }
 
 function createCategoryCard(category) {
@@ -271,7 +287,7 @@ async function loadCategories(filter, page = 1) {
 
   const data = await fetchFilters(filter, page);
 
-  if (data && data.results) {
+  if (data?.results) {
     const activePage = parseInt(data.page, 10) || page;
     const totalPages = parseInt(data.totalPages, 10) || 1;
 
@@ -290,12 +306,13 @@ async function loadDetailExercises(category, filterType, page = 1) {
 
   const data = await fetchExercisesByCategory(category, filterType, page, searchQuery);
 
-  if (data && data.results) {
+  if (data?.results) {
     const activePage = parseInt(data.page, 10) || page;
     const totalPages = parseInt(data.totalPages, 10) || 1;
 
     renderDetailExercises(data.results);
     renderPagination(activePage, totalPages, true);
+
     currentPage = activePage;
   } else if (exercisesList) {
     exercisesList.innerHTML = '<li class="exercises__error">Failed to load exercises</li>';
@@ -313,85 +330,83 @@ function showExercisesForCategory(categoryName) {
   loadDetailExercises(categoryName, currentFilter, 1);
 }
 
-function updateUIForCategoryView() {
-  if (exercisesCategoryTitle) exercisesCategoryTitle.textContent = '';
-  if (exercisesSearch) exercisesSearch.style.display = 'none';
-  if (exercisesTabs) exercisesTabs.style.display = '';
-  if (exercisesSearchInput) exercisesSearchInput.value = '';
+let onKeyDownHandler = null;
+
+function addKeyboardListeners() {
+  if (onKeyDownHandler) return;
+
+  onKeyDownHandler = e => {
+    if (e.key !== 'Escape') return;
+
+    if (ratingModal?.classList.contains('is-open')) {
+      closeRatingModal();
+      return;
+    }
+    if (exerciseModal?.classList.contains('is-open')) {
+      closeExerciseModal();
+    }
+  };
+
+  document.addEventListener('keydown', onKeyDownHandler);
 }
 
-function updateUIForDetailView(categoryName) {
-  if (exercisesCategoryTitle) {
-    exercisesCategoryTitle.innerHTML = ` / <span class="exercises__category-name">${capitalizeFirstLetter(
-      categoryName
-    )}</span>`;
+function removeKeyboardListenersIfNoModalsOpen() {
+  const anyOpen =
+    (exerciseModal && exerciseModal.classList.contains('is-open')) ||
+    (ratingModal && ratingModal.classList.contains('is-open'));
+
+  if (anyOpen) return;
+
+  if (onKeyDownHandler) {
+    document.removeEventListener('keydown', onKeyDownHandler);
+    onKeyDownHandler = null;
   }
-  if (exercisesSearch) exercisesSearch.style.display = '';
 }
 
-function capitalizeFirstLetter(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function showLoading() {
-  if (exercisesList) exercisesList.innerHTML = '<li class="exercises__loading">Loading...</li>';
-}
-
-function hideLoading() {}
-
-function showError(message) {
-  if (exercisesList) exercisesList.innerHTML = `<li class="exercises__error">${message}</li>`;
-}
-
-async function openExerciseDetail(exerciseId) {
-  if (!exerciseModal) return;
-
-  openModal();
-  setModalState('loading');
-
-  const data = await fetchExerciseById(exerciseId);
-
-  if (!data) {
-    setModalState('error', 'Failed to load exercise details. Please try again later.');
-    return;
-  }
-
-  fillModalContent(data);
-  setModalState('ready');
-}
-
-function openModal() {
-  exerciseModal.classList.add('is-open');
+function lockScroll() {
   document.body.classList.add('no-scroll');
-  exerciseModal.setAttribute('aria-hidden', 'false');
 }
 
-function closeModal() {
+function unlockScrollIfNoModalsOpen() {
+  const anyOpen =
+    (exerciseModal && exerciseModal.classList.contains('is-open')) ||
+    (ratingModal && ratingModal.classList.contains('is-open'));
+
+  if (!anyOpen) document.body.classList.remove('no-scroll');
+}
+
+function setExerciseModalState(state, message = '') {
   if (!exerciseModal) return;
-  exerciseModal.classList.remove('is-open');
+
   exerciseModal.classList.remove('exercises__modal--loading', 'exercises__modal--error');
-  document.body.classList.remove('no-scroll');
-  exerciseModal.setAttribute('aria-hidden', 'true');
-}
 
-function openRatingModal() {
-  if (!ratingModal) return;
-  if (exerciseModal && exerciseModal.classList.contains('is-open')) closeModal();
-  resetRatingForm();
-  setRatingModalState('ready');
-  ratingModal.classList.add('is-open');
-  document.body.classList.add('no-scroll');
-  ratingModal.setAttribute('aria-hidden', 'false');
-}
-
-function closeRatingModal() {
-  if (!ratingModal) return;
-  ratingModal.classList.remove('is-open');
-  ratingModal.classList.remove('exercises__modal--loading', 'exercises__modal--error');
-  ratingModal.setAttribute('aria-hidden', 'true');
-  if (!exerciseModal || !exerciseModal.classList.contains('is-open')) {
-    document.body.classList.remove('no-scroll');
+  if (state === 'loading') {
+    exerciseModal.classList.add('exercises__modal--loading');
+    if (exerciseModalError) exerciseModalError.textContent = '';
   }
+  if (state === 'error') {
+    exerciseModal.classList.add('exercises__modal--error');
+    if (exerciseModalError) exerciseModalError.textContent = message;
+  }
+  if (state === 'ready') {
+    if (exerciseModalError) exerciseModalError.textContent = '';
+  }
+}
+
+function openExerciseModal() {
+  if (!exerciseModal) return;
+  exerciseModal.classList.add('is-open');
+  exerciseModal.setAttribute('aria-hidden', 'false');
+  lockScroll();
+  addKeyboardListeners();
+}
+
+function closeExerciseModal() {
+  if (!exerciseModal) return;
+  exerciseModal.classList.remove('is-open', 'exercises__modal--loading', 'exercises__modal--error');
+  exerciseModal.setAttribute('aria-hidden', 'true');
+  unlockScrollIfNoModalsOpen();
+  removeKeyboardListenersIfNoModalsOpen();
 }
 
 function setRatingModalState(state, message = '') {
@@ -403,15 +418,97 @@ function setRatingModalState(state, message = '') {
     ratingModal.classList.add('exercises__modal--loading');
     if (ratingModalError) ratingModalError.textContent = '';
   }
-
   if (state === 'error') {
     ratingModal.classList.add('exercises__modal--error');
     if (ratingModalError) ratingModalError.textContent = message;
   }
-
   if (state === 'ready') {
     if (ratingModalError) ratingModalError.textContent = '';
   }
+}
+
+function openRatingModal() {
+  if (!ratingModal) return;
+  if (exerciseModal?.classList.contains('is-open')) closeExerciseModal();
+
+  resetRatingForm();
+  setRatingModalState('ready');
+
+  ratingModal.classList.add('is-open');
+  ratingModal.setAttribute('aria-hidden', 'false');
+  lockScroll();
+  addKeyboardListeners();
+}
+
+function closeRatingModal() {
+  if (!ratingModal) return;
+
+  ratingModal.classList.remove('is-open', 'exercises__modal--loading', 'exercises__modal--error');
+  ratingModal.setAttribute('aria-hidden', 'true');
+
+  unlockScrollIfNoModalsOpen();
+  removeKeyboardListenersIfNoModalsOpen();
+}
+
+function updateStars(rating) {
+  if (!exerciseModalStars) return;
+
+  const stars = exerciseModalStars.querySelectorAll('.exercises__modal-star');
+  const activeCount = Math.round(Number(rating) || 0);
+
+  stars.forEach((star, idx) => {
+    star.classList.toggle('is-active', idx < activeCount);
+  });
+}
+
+function updateFavoriteButtonState(isFav) {
+  if (!exerciseModalFavoriteBtnText) return;
+  exerciseModalFavoriteBtnText.textContent = isFav ? 'Remove from favorites' : 'Add to favorites';
+  if (exerciseModalFavoriteBtn) {
+    exerciseModalFavoriteBtn.classList.toggle('is-active', isFav);
+  }
+}
+
+function fillModalContent(data) {
+  if (!exerciseModal) return;
+
+  currentModalExercise = data;
+
+  if (exerciseModalImg) {
+    exerciseModalImg.src = data.gifUrl || data.imgURL || '../img/placeholder.jpg';
+    exerciseModalImg.alt = data.name || 'Exercise image';
+  }
+  if (exerciseModalTitle) exerciseModalTitle.textContent = data.name || 'Exercise';
+
+  const rating = data.rating ? Number(data.rating) : 0;
+  if (exerciseModalRatingValue) exerciseModalRatingValue.textContent = rating.toFixed(1);
+  updateStars(rating);
+
+  if (exerciseModalTarget) exerciseModalTarget.textContent = data.target || '-';
+  if (exerciseModalBodyPart) exerciseModalBodyPart.textContent = data.bodyPart || '-';
+  if (exerciseModalEquipment) exerciseModalEquipment.textContent = data.equipment || '-';
+  if (exerciseModalPopularity) exerciseModalPopularity.textContent = String(data.popularity || 0);
+  if (exerciseModalCalories) exerciseModalCalories.textContent = `${data.burnedCalories} / ${data.time} min`;
+  if (exerciseModalDescription) exerciseModalDescription.textContent = data.description || '';
+
+  updateFavoriteButtonState(isFavorite(data._id));
+}
+
+async function openExerciseDetail(exerciseId) {
+  if (!exerciseModal) return;
+
+  openExerciseModal();
+  setExerciseModalState('loading');
+
+  const data = await fetchExerciseById(exerciseId);
+
+  if (!data) {
+    setExerciseModalState('error', 'Failed to load exercise details. Please try again later.');
+    return;
+  }
+
+  fillModalContent(data);
+  setExerciseModalState('ready');
 }
 
 function resetRatingForm() {
@@ -425,126 +522,67 @@ function updateRatingModalStars(rating) {
   if (!ratingModalStars || !ratingModalValue) return;
 
   const stars = ratingModalStars.querySelectorAll('.exercises__rating-star');
-  const activeCount = Math.round(rating);
+  const activeCount = Math.round(Number(rating) || 0);
 
-  ratingModalValue.textContent = Number(rating).toFixed(1);
+  ratingModalValue.textContent = Number(rating || 0).toFixed(1);
 
-  stars.forEach((star, index) => {
-    if (index < activeCount) star.classList.add('is-active');
-    else star.classList.remove('is-active');
+  stars.forEach((star, idx) => {
+    star.classList.toggle('is-active', idx < activeCount);
   });
 }
 
-async function handleRatingSubmit(event) {
-  event.preventDefault();
+async function handleRatingSubmit(e) {
+  e.preventDefault();
   if (!currentModalExercise) return;
 
-  const payload = {
-    rating: Number(currentRatingValue) || 0,
-  };
+  const email = (ratingEmailInput?.value || '').trim();
+  const review = (ratingReviewInput?.value || '').trim();
+  const rate = Number(currentRatingValue) || 0;
+
+  if (rate <= 0) {
+    setRatingModalState('error', 'Please select a rating (1–5 stars).');
+    return;
+  }
+  if (!email) {
+    setRatingModalState('error', 'Email is required.');
+    return;
+  }
+
+  const payload = { rate, email, review };
 
   try {
     setRatingModalState('loading');
+
     const data = await submitExerciseRating(currentModalExercise._id, payload);
 
-    const newRating = data && typeof data.rating === 'number' ? data.rating : payload.rating;
+    const newRating =
+      (data && typeof data.rating === 'number' && data.rating) ||
+      (data && typeof data.rate === 'number' && data.rate) ||
+      rate;
 
     currentModalExercise.rating = newRating;
 
-    if (exerciseModalRatingValue) {
-      exerciseModalRatingValue.textContent = newRating.toFixed(1);
-    }
-
+    if (exerciseModalRatingValue) exerciseModalRatingValue.textContent = Number(newRating).toFixed(1);
     updateStars(newRating);
 
-    const detailCard = document.querySelector(
-      `.exercises__detail-card[data-exercise-id="${currentModalExercise._id}"]`
-    );
-    if (detailCard) {
-      const ratingValueEl = detailCard.querySelector('.exercises__detail-rating-value');
-      if (ratingValueEl) ratingValueEl.textContent = newRating.toFixed(1);
+    const card = document.querySelector(`.exercises__detail-card[data-exercise-id="${currentModalExercise._id}"]`);
+    if (card) {
+      const ratingEl = card.querySelector('.exercises__detail-rating-value');
+      if (ratingEl) ratingEl.textContent = Number(newRating).toFixed(1);
     }
 
     setRatingModalState('ready');
     closeRatingModal();
   } catch (error) {
-    setRatingModalState('error', error.message);
+    setRatingModalState('error', error.message || 'Failed to submit rating.');
   }
 }
 
-function setModalState(state, message = '') {
-  if (!exerciseModal) return;
-
-  exerciseModal.classList.remove('exercises__modal--loading', 'exercises__modal--error');
-
-  if (state === 'loading') {
-    exerciseModal.classList.add('exercises__modal--loading');
-    if (exerciseModalError) exerciseModalError.textContent = '';
-  }
-
-  if (state === 'error') {
-    exerciseModal.classList.add('exercises__modal--error');
-    if (exerciseModalError) exerciseModalError.textContent = message;
-  }
-
-  if (state === 'ready') {
-    if (exerciseModalError) exerciseModalError.textContent = '';
-  }
-}
-
-function fillModalContent(data) {
-  if (!exerciseModal) return;
-
-  currentModalExercise = data;
-
-  exerciseModalImg.src = data.gifUrl || data.imgURL || '../img/placeholder.jpg';
-  exerciseModalImg.alt = data.name || 'Exercise image';
-  exerciseModalTitle.textContent = data.name || 'Exercise';
-
-  const rating = data.rating ? Number(data.rating) : 0;
-  exerciseModalRatingValue.textContent = rating.toFixed(1);
-  updateStars(rating);
-
-  exerciseModalTarget.textContent = data.target || '-';
-  exerciseModalBodyPart.textContent = data.bodyPart || '-';
-  exerciseModalEquipment.textContent = data.equipment || '-';
-  exerciseModalPopularity.textContent = data.popularity || '0';
-  exerciseModalCalories.textContent = `${data.burnedCalories} / ${data.time} min`;
-  exerciseModalDescription.textContent = data.description || '';
-
-  updateFavoriteButtonState(isFavorite(data._id));
-}
-
-function updateFavoriteButtonState(isFav) {
-  if (!exerciseModalFavoriteBtnText) return;
-
-  exerciseModalFavoriteBtnText.textContent = isFav ? 'Remove from favorites' : 'Add to favorites';
-  if (exerciseModalFavoriteBtn) {
-    exerciseModalFavoriteBtn.classList.toggle('is-active', isFav);
-  }
-}
-
-function updateStars(rating) {
-  if (!exerciseModalStars) return;
-
-  const stars = exerciseModalStars.querySelectorAll('.exercises__modal-star');
-  const activeCount = Math.round(rating);
-
-  stars.forEach((star, index) => {
-    if (index < activeCount) star.classList.add('is-active');
-    else star.classList.remove('is-active');
-  });
-}
-
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+function debounce(fn, wait) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn(...args), wait);
   };
 }
 
@@ -572,15 +610,21 @@ function initializeTabs() {
 function initializeSearch() {
   if (!exercisesSearchInput) return;
 
-  exercisesSearchInput.addEventListener(
-    'input',
-    debounce(e => {
-      searchQuery = e.target.value.trim();
-      if (isDetailView && currentCategory) {
-        loadDetailExercises(currentCategory, currentFilter, 1);
-      }
-    }, 300)
-  );
+  const runSearch = () => {
+    searchQuery = exercisesSearchInput.value.trim();
+    if (isDetailView && currentCategory) {
+      loadDetailExercises(currentCategory, currentFilter, 1);
+    }
+  };
+
+  if (exercisesSearchForm) {
+    exercisesSearchForm.addEventListener('submit', e => {
+      e.preventDefault();
+      runSearch();
+    });
+  }
+
+  exercisesSearchInput.addEventListener('input', debounce(runSearch, 300));
 }
 
 function init() {
@@ -588,6 +632,9 @@ function init() {
   exercisesPagination = document.getElementById('exercisesPagination');
   exercisesTabs = document.getElementById('exercisesTabs');
   exercisesSearch = document.getElementById('exercisesSearch');
+
+  exercisesSearchForm = document.getElementById('exercisesSearchForm') || null;
+
   exercisesSearchInput = document.getElementById('exercisesSearchInput');
   exercisesCategoryTitle = document.getElementById('exercisesCategoryTitle');
 
@@ -603,6 +650,7 @@ function init() {
   exerciseModalCalories = document.getElementById('exerciseModalCalories');
   exerciseModalDescription = document.getElementById('exerciseModalDescription');
   exerciseModalError = document.getElementById('exerciseModalError');
+
   exerciseModalFavoriteBtn = exerciseModal ? exerciseModal.querySelector('.exercises__modal-btn--primary') : null;
   exerciseModalFavoriteBtnText = exerciseModal ? exerciseModal.querySelector('.exercises__modal-btn-text') : null;
   exerciseModalRatingBtn = document.getElementById('exerciseModalRatingBtn');
@@ -615,39 +663,29 @@ function init() {
   ratingModalForm = document.getElementById('ratingModalForm');
   ratingModalError = document.getElementById('ratingModalError');
 
-  if (!exercisesList) return;
+  const hasExercisesList = Boolean(exercisesList);
 
-  initializeTabs();
-  initializeSearch();
+  if (hasExercisesList) {
+    initializeTabs();
+    initializeSearch();
+    loadCategories(currentFilter);
+  }
 
   if (exerciseModal) {
     const closeTargets = exerciseModal.querySelectorAll('[data-modal-close]');
-    closeTargets.forEach(target => target.addEventListener('click', closeModal));
-
-    document.addEventListener('keydown', e => {
-      if (e.key !== 'Escape') return;
-
-      if (ratingModal && ratingModal.classList.contains('is-open')) {
-        closeRatingModal();
-        return;
-      }
-
-      if (exerciseModal.classList.contains('is-open')) {
-        closeModal();
-      }
-    });
+    closeTargets.forEach(btn => btn.addEventListener('click', closeExerciseModal));
   }
 
   if (ratingModal) {
-    const ratingCloseTargets = ratingModal.querySelectorAll('[data-modal-close]');
-    ratingCloseTargets.forEach(target => target.addEventListener('click', closeRatingModal));
+    const closeTargets = ratingModal.querySelectorAll('[data-modal-close]');
+    closeTargets.forEach(btn => btn.addEventListener('click', closeRatingModal));
   }
 
   if (exerciseModalFavoriteBtn) {
     exerciseModalFavoriteBtn.addEventListener('click', () => {
       if (!currentModalExercise) return;
-      const isFav = toggleFavorite(currentModalExercise);
-      updateFavoriteButtonState(isFav);
+      const isFavNow = toggleFavorite(currentModalExercise);
+      updateFavoriteButtonState(isFavNow);
     });
   }
 
@@ -657,19 +695,18 @@ function init() {
 
   if (ratingModalStars) {
     ratingModalStars.addEventListener('click', e => {
-      const target = e.target.closest('.exercises__rating-star');
-      if (!target) return;
-      const value = Number(target.dataset.value || 0);
+      const btn = e.target.closest('.exercises__rating-star');
+      if (!btn) return;
+      const value = Number(btn.dataset.value || 0);
       currentRatingValue = value;
       updateRatingModalStars(value);
+      setRatingModalState('ready');
     });
   }
 
   if (ratingModalForm) {
     ratingModalForm.addEventListener('submit', handleRatingSubmit);
   }
-
-  loadCategories(currentFilter);
 }
 
 if (document.readyState === 'loading') {
@@ -678,4 +715,4 @@ if (document.readyState === 'loading') {
   init();
 }
 
-export { loadCategories, loadDetailExercises, showExercisesForCategory };
+export { loadCategories, loadDetailExercises, showExercisesForCategory, openExerciseDetail };
